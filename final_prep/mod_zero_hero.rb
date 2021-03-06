@@ -42,28 +42,25 @@ p sidekicks
 #   - save_the_day should be a string a hero would say once they save the day
 #   - bad_excuse should be a string a hero would say if they are too afraid of the danger_level
 def assess_situation(danger_level, save_the_day, bad_excuse)
-  danger_level = 5
-  save_the_day = "We did it!"
-  bad_excuse = "We should return home"
 # Your function should include an if/else statement that meets the following criteria
 #   - Danger levels that are above 50 are too scary for your hero. Any danger level that is above 50 should result in printing the bad_excuse to the terminal
 #   - Anything danger_level that is between 10 and 50 should result in printing the save_the_day string to the terminal
 #   - If the danger_level is below 10, it means it is not worth your time and should result in printing the string "Meh. Hard pass." to the terminal.
-if danger_level >= 50
-  p bad_excuse
-elsif danger_level <= 10
-  p "Meh, hard pass."
-else
-  p save_the_day
-end
+  if danger_level > 50
+    p bad_excuse
+  elsif danger_level > 10
+    p save_the_day
+  else
+    p "Meh, hard pass."
+  end
 end
 
 #Test Cases
 announcement = 'Never fear, the Courageous Curly Bracket is here!'
 excuse = 'I think I forgot to lock up my 1992 Toyota Coralla. Be right back.'
-# assess_situation(99, announcement, excuse) > Should print - 'I think I forgot to lock up my 1992 Toyota Coralla. Be right back.'
+#assess_situation(99, announcement, excuse) > Should print - 'I think I forgot to lock up my 1992 Toyota Coralla. Be right back.'
 #assess_situation(21, announcement, excuse) > should print - 'Never fear, the Courageous Curly Bracket is here!'
-#assess_situation(3, announcement, excuse) > should print - "Meh. Hard pass."
+assess_situation(3, announcement, excuse) #> should print - "Meh. Hard pass."
 
 
 # Declare a new variable - scary_monster - assigned to an hash with the following key/values
@@ -86,44 +83,51 @@ scary_monster = {name: "Spider Guy", smell: "pungent", weight: 120 , cities_dest
 #   - power_level = 100
 #   - energy_level = 50
 # class variable
-class SuperHero
-  attr_reader :name, :super_power, :age
- def initialize(name, super_power, age)
-   @name = name
-   @super_power = super_power
-   @age = age
- end
- def initialize (arch_nemesis, power_level, energy_level)
-   @@arch_nemesis = "The Syntax Error"
-   @@power_level = 100
-   @@energy_level = 50
- end
-
-   def say_name
-     puts "Hi, I'm #{say_name}!"
-   end
-   def maximize_energy
-     energy_level = 100
-   end
-   def gain_power
-     gain_power = power_level + 6
-   end
- end
 
 # - Create the following class methods
 #   - say_name, should print the hero's name to the terminal
 #   - maximize_energy, should update the energy_level to 1000
 #   - gain_power, should take an argument of a number and INCREASE the power_level by that number
 
-
 # - Create 2 instances of your SuperHero class
-batman = SuperHero.new("Batman","Stength", 26)
-p batman.name
-superman = SuperHero.new("Superman","X-ray Vision", 30)
+class SuperHero
+  attr_reader :name, :super_power, :age, :arch_nemesis, :power_level, :energy_level
+
+  def initialize(name, super_power, age)
+    @name = name
+    @super_power = super_power
+    @age = age
+    @arch_nemesis = "The Syntax Error"
+    @power_level = 100
+    @energy_level = 50
+  end
+
+  def say_name
+    p name
+  end
+
+  def maximize_energy
+    energy_level = 1000
+    p "We have updated the energy level to: #{energy_level}!"
+  end
+
+  def gain_power(gained_power)
+    p "Your current power level is #{power_level}!"
+    @power_level = power_level + gained_power
+    p "You have gained #{gained_power} power and we now have #{power_level} power!"
+  end
+
+end
+batman = SuperHero.new("batman", "Stength", 26)
+superman = SuperHero.new("Superman", "X-ray Vision", 30)
+superman.gain_power(30)
+superman.say_name
+superman.maximize_energy
 
 # Reflection
 # What parts were most difficult about this exerise?
-
+#Creating the values and methods of the SuperHero class was the most difficult part.
 # What parts felt most comfortable to you?
-
+#Creating a hash and declaring all of the variables was most comfortable to me.
 # What skills do you need to continue to practice before starting Mod 1?
+#I need to continue practicing if/else statements and classes with values and methods inside of it. 
